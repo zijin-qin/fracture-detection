@@ -1,0 +1,6 @@
+train: fracatlas_final/train/images
+val: fracatlas_final/validation/images
+test: fracatlas_final/test/images
+
+nc: 1
+names: ["fractured"]
