@@ -18,7 +18,7 @@ We randomly selected and displayed five images. This visual inspection confirmed
 ## Data Pre-processing Steps
 
 ### Image Normalization
-We also decided to convert our images to grayscale in order to simply our image dataset and normalized the brightness of the pixels to be in the range between 0 and 1. Additionally, we standardized the data so that the mean of the features is at 1 and the standard deviation is at 0. We wanted to ensure that each image had a consistent format and that each feature had the same scale in order to improve the performance of our machine learning aglorithm.    
+We want to resize the images to a uniform dimension. We also want to convert our images to grayscale in order to simplify our image dataset and normalize the brightness of the pixels to be in the range between 0 and 1. Additionally, we want to standardize the data so that the mean of the features is at 1 and the standard deviation is at 0. We want to ensure that each image has a consistent format and that each feature has the same scale in order to improve the performance of our machine learning aglorithm.    
 
 ### Data Variability
 As part of our data pre-processing steps, we also want to apply transformations to the images to increase data variability. We can also zoom in or out, change the coordinates of the images, or modify the images through inclusion of noise to further enhance variability for training our model. 
