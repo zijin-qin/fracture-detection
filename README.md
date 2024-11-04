@@ -15,8 +15,10 @@ We examined the image sizes to assess the consistency of image dimensions. Our a
 
 We randomly selected and displayed five images. This visual inspection confirmed the quality and relevance of the images, providing insights into the variety and nature of the data we are working with.
 
-## Data Preprocessing Steps
+## Data Pre-processing Steps
+
 ### Image Normalization
 We also decided to convert our images to grayscale in order to simply our image dataset and normalized the brightness of the pixels to be in the range between 0 and 1. Additionally, we standardized the data so that the mean of the features is at 1 and the standard deviation is at 0. We wanted to ensure that each image had a consistent format and that each feature had the same scale in order to improve the performance of our machine learning aglorithm.    
 
-As part of our data preprocessing steps, we also want to apply transformations (such as rotation or flipping) to the images to increase data variability. 
+### Data Variability
+As part of our data pre-processing steps, we also want to apply transformations to the images to increase data variability. We can also zoom in or out, change the coordinates of the images, or modify the images through inclusion of noise to further enhance variability for training our model. 
