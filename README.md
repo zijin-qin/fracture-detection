@@ -22,3 +22,5 @@ We want to resize the images to a uniform dimension. We also want to convert our
 
 ### Data Variability
 As part of our data pre-processing steps, we also want to apply transformations to the images to increase data variability. We can also zoom in or out, change the coordinates of the images, or modify the images through inclusion of noise to further enhance variability for training our model. 
+
+Link to jupyter notebook: [View the Notebook](eda_milestone2.ipynb)
