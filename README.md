@@ -33,7 +33,7 @@ Example ground truth and predictions for test set:
 <img width="646" alt="Screenshot 2024-11-17 at 8 17 59 PM" src="https://github.com/user-attachments/assets/e411786f-83a5-4f9e-85b2-7d2be59debcf">
 
 3. **Bounding Box Overlay Function**
-   - 'draw_bounding_boxes' was implemented to visualize YOLO annotations by overlaying bounding boxes on images using OpenCV
+   - `draw_bounding_boxes` was implemented to visualize YOLO annotations by overlaying bounding boxes on images using OpenCV
    - The function parsed YOLO annotation files, converted relative bounding box coordinates to absolute pixel values, and drew the boxes on the corresponding images.
 
 4. **Dataset Balancing**: To address class imbalance, the SMOTE (Synthetic Minority Oversampling Technique) algorithm was applied to the training data, ensuring both fractured and non-fractured classes were adequately represented.
