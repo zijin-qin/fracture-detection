@@ -53,7 +53,7 @@ Since the last milestone, the project has made significant strides in data prepr
 
 4. **Dataset Balancing**: To address class imbalance, the SMOTE (Synthetic Minority Oversampling Technique) algorithm was applied to the training data, ensuring both fractured and non-fractured classes were adequately represented.
 
-5. **Model Development**:
+5. **Model Development**: Our model is a convolutional neural network (CNN) with three convolutional layers featuring increasing filter sizes, followed by batch normalization, ReLU activations, a global average pooling layer, and a dense output layer. The model has a total of 24,394 parameters, of which 24,170 are trainable and 224 are non-trainable. 
 
 Example ground truth and predictions for train set:
  
@@ -68,9 +68,7 @@ Example ground truth and predictions for test set:
 
 ### What is the conclusion of your 1st model? What can be done to possibly improve it?
 
-Our model is a convolutional neural network (CNN) with three convolutional layers featuring increasing filter sizes, followed by batch normalization, ReLU activations, a global average pooling layer, and a dense output layer. The model has a total of 24,394 parameters, of which 24,170 are trainable and 224 are non-trainable. 
-
-The performance of the model on the training set shows a loss of approximate 0.6756 and an accuracy of about 75.22%. The performance of the model on the validation set shows a loss of approximately 0.5254 and an accuracy of about 82.28%. The performance of the model on the testing set shows a loss of approximately 0.6286 and an accuracy of about 78.32%. This suggests that the model might be underfitting as it is not learning the training data well enough, likely because of the imbalance in the two label classes. The dataset primarily consists of non fractured images (around 80%) so we need to ensure the training, test, and validation sets have a more equal split between the classes. 
+The performance of the 1st model on the training set shows a loss of approximate 0.6756 and an accuracy of about 75.22%. The performance of the model on the validation set shows a loss of approximately 0.5254 and an accuracy of about 82.28%. The performance of the model on the testing set shows a loss of approximately 0.6286 and an accuracy of about 78.32%. This suggests that the model might be underfitting as it is not learning the training data well enough, likely because of the imbalance in the two label classes. The dataset primarily consists of non fractured images (around 80%) so we need to ensure the training, test, and validation sets have a more equal split between the classes. 
 
 We can improve the model by enhancing its performance on both the training and test sets through tuning hyperparameters. Adding regularization techniques will help prevent overfitting if needed. Modifying the architecture to add more layers can also allow for more complex features to be extracted. Smaller batch sizes can also allow for more complex patterns to be learned, even if it may increase training time.
 
