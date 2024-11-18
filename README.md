@@ -11,6 +11,6 @@ Considering that we have bounding box annotations, object detection models like 
 
 ### New Work/Updates since Milestone 2
 
-
+The `draw_bounding_boxes` function was added to the preprocessing stage which visualizes YOLO annotations by overlaying bounding boxes on images. It reads YOLO-formatted annotation files, converts relative coordinates to pixel values, and draws the corresponding boxes on the image using OpenCV. 
 
 ### What is the conclusion of your 1st model? What can be done to possibly improve it?
