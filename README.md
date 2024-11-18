@@ -18,8 +18,10 @@ The `draw_bounding_boxes` function was added to the preprocessing stage which vi
  <img width="611" alt="Screenshot 2024-11-17 at 8 17 35 PM" src="https://github.com/user-attachments/assets/ad59a1ab-b071-4786-a663-d899c7e09737">
 
 Example ground truth and predictions for validation set:
+<img width="635" alt="Screenshot 2024-11-17 at 8 17 47 PM" src="https://github.com/user-attachments/assets/ca73cb3b-745b-4dea-9afd-e85c75d5177a">
 
 Example ground truth and predictions for test set:
+<img width="646" alt="Screenshot 2024-11-17 at 8 17 59 PM" src="https://github.com/user-attachments/assets/e411786f-83a5-4f9e-85b2-7d2be59debcf">
 
 
 ### What is the conclusion of your 1st model? What can be done to possibly improve it?
