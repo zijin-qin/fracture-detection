@@ -15,7 +15,7 @@ Since the last milestone, the project has made significant strides in data prepr
 
 1. **Expanded Dataset**: The original dataset contained only fractured images, which restricted the classification scope. We located an expanded version of the dataset on Kaggle that included both fractured and non-fractured images, enabling a binary classification task.
    
-2. **Redoing Preprocesssing**: With the new dataset, preprocessing steps were revisited:
+2. **Preprocesssing**: With the new dataset, some preprocessing steps were revisited:
    - *Grayscale Conversion*: All images were resized to 224x224 and converted to grayscale for simplicity and consistency.
    - *Normalization*: Pixel values were normalized to the range [0, 1] for numerical stability.
    - *Standardization*: Images were standardized to have a mean of 0 and a standard deviation of 1.
