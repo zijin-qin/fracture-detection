@@ -13,10 +13,13 @@ Considering that we have bounding box annotations, object detection models like 
 
 The `draw_bounding_boxes` function was added to the preprocessing stage which visualizes YOLO annotations by overlaying bounding boxes on images. It reads YOLO-formatted annotation files, converts relative coordinates to pixel values, and draws the corresponding boxes on the image using OpenCV. 
 
- Example ground truth and predictions for train:
+ Example ground truth and predictions for train set:
+ 
  <img width="611" alt="Screenshot 2024-11-17 at 8 17 35 PM" src="https://github.com/user-attachments/assets/ad59a1ab-b071-4786-a663-d899c7e09737">
 
+Example ground truth and predictions for validation set:
 
+Example ground truth and predictions for test set:
 
 
 ### What is the conclusion of your 1st model? What can be done to possibly improve it?
