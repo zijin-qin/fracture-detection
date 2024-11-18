@@ -13,8 +13,6 @@ Considering that we have bounding box annotations, object detection models like 
 
 Since the last milestone, the project has made significant strides in data preprocessing, dataset preparation, annotation, and building a Convolutional Neural Network (CNN) for image classification. Adjustments were also made to accommodate a new and expanded dataset.
 
-## Dataset Update and Preprocessing Adjustments
-
 1. **Expanded Dataset**: The original dataset contained only fractured images, which restricted the classification scope. We located an expanded version of the dataset on Kaggle that included both fractured and non-fractured images, enabling a binary classification task.
    
 2. **Redoing Preprocesssing**: With the new dataset, preprocessing steps were revisited:
