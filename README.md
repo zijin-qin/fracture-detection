@@ -11,7 +11,16 @@ Considering that we have bounding box annotations, object detection models like 
 
 ### New Work/Updates since Milestone 2
 
-The `draw_bounding_boxes` function was added to the preprocessing stage which visualizes YOLO annotations by overlaying bounding boxes on images. It reads YOLO-formatted annotation files, converts relative coordinates to pixel values, and draws the corresponding boxes on the image using OpenCV. 
+Since the last milestone, the project has made significant strides in data preprocessing, dataset preparation, annotation validation, and building a Convolutional Neural Network (CNN) for image classification. Adjustments were also made to accommodate a new and expanded dataset.
+
+## Dataset Update and Preprocessing Adjustments
+
+1. **Expanded Dataset**: The original dataset contained only fractured images, which restricted the classification scope. We located an expanded version of the dataset on Kaggle that included both fractured and non-fractured images, enabling a binary classification task.
+2. **Redoing Preprocesssing**: With the new dataset, preprocessing steps were revisited:
+- Grayscale Conversion: All images were resized to 224x224 and converted to grayscale for simplicity and consistency.
+- Normalization: Pixel values were normalized to the range [0, 1] for numerical stability.
+- Standardization: Images were standardized to have a mean of 0 and a standard deviation of 1.
+- Label Encoding: Labels were updated, with Non-fractured images assigned the label 0 and Fractured images assigned the label 1.
 
  Example ground truth and predictions for train set:
  
