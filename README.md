@@ -11,16 +11,17 @@ Considering that we have bounding box annotations, object detection models like 
 
 ### New Work/Updates since Milestone 2
 
-Since the last milestone, the project has made significant strides in data preprocessing, dataset preparation, annotation validation, and building a Convolutional Neural Network (CNN) for image classification. Adjustments were also made to accommodate a new and expanded dataset.
+Since the last milestone, the project has made significant strides in data preprocessing, dataset preparation, annotation, and building a Convolutional Neural Network (CNN) for image classification. Adjustments were also made to accommodate a new and expanded dataset.
 
 ## Dataset Update and Preprocessing Adjustments
 
 1. **Expanded Dataset**: The original dataset contained only fractured images, which restricted the classification scope. We located an expanded version of the dataset on Kaggle that included both fractured and non-fractured images, enabling a binary classification task.
+   
 2. **Redoing Preprocesssing**: With the new dataset, preprocessing steps were revisited:
-- Grayscale Conversion: All images were resized to 224x224 and converted to grayscale for simplicity and consistency.
-- Normalization: Pixel values were normalized to the range [0, 1] for numerical stability.
-- Standardization: Images were standardized to have a mean of 0 and a standard deviation of 1.
-- Label Encoding: Labels were updated, with Non-fractured images assigned the label 0 and Fractured images assigned the label 1.
+   - *Grayscale Conversion*: All images were resized to 224x224 and converted to grayscale for simplicity and consistency.
+   - *Normalization*: Pixel values were normalized to the range [0, 1] for numerical stability.
+   - *Standardization*: Images were standardized to have a mean of 0 and a standard deviation of 1.
+   - *Label Encoding*: Labels were updated, with Non-fractured images assigned the label 0 and Fractured images assigned the label 1.
 
  Example ground truth and predictions for train set:
  
@@ -33,6 +34,13 @@ Example ground truth and predictions for test set:
 
 <img width="646" alt="Screenshot 2024-11-17 at 8 17 59 PM" src="https://github.com/user-attachments/assets/e411786f-83a5-4f9e-85b2-7d2be59debcf">
 
+3. **Bounding Box Overlay Function**
+   - 'draw_bounding_boxes' was implemented to visualize YOLO annotations by overlaying bounding boxes on images using OpenCV
+   - The function parsed YOLO annotation files, converted relative bounding box coordinates to absolute pixel values, and drew the boxes on the corresponding images.
+
+4. **Dataset Balancing**: To address class imbalance, the SMOTE (Synthetic Minority Oversampling Technique) algorithm was applied to the training data, ensuring both fractured and non-fractured classes were adequately represented.
+
+5. **Model Development**:
 
 ### What is the conclusion of your 1st model? What can be done to possibly improve it?
 
