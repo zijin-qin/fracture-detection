@@ -13,6 +13,10 @@ Considering that we have bounding box annotations, object detection models like 
 
 The `draw_bounding_boxes` function was added to the preprocessing stage which visualizes YOLO annotations by overlaying bounding boxes on images. It reads YOLO-formatted annotation files, converts relative coordinates to pixel values, and draws the corresponding boxes on the image using OpenCV. 
 
+ Example ground truth and predictions for train:
+
+
+
 ### What is the conclusion of your 1st model? What can be done to possibly improve it?
 
 Our model is a convolutional neural network (CNN) with three convolutional layers featuring increasing filter sizes, followed by batch normalization, ReLU activations, a global average pooling layer, and a dense output layer. The model has a total of 24,394 parameters, of which 24,170 are trainable and 224 are non-trainable.
