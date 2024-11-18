@@ -1,7 +1,6 @@
 # fracture-detection
 
-
-## Data Exploratory Steps
+## Milestone 2
 
 ### Dataset description
 The dataset consists of 717 image files, each with a corresponding text file indicating the location of any fracture observations in the image. There are three subsets in the dataset for training, testing, and validation. These sets consist of 574, 61, and 82 images respectively. The images are not of the same size or color scale, and so they will need to be normalized.
