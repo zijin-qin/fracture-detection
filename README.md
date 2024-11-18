@@ -1,6 +1,6 @@
-# fracture-detection
+## fracture-detection
 
-### Milestone 3
+## Milestone 3
 # Where does your model fit in the fitting graph?
 Our model is within the ideal range of model complexity as depicted in the fitting graph. This indicates that the model has achieved a balance between underfitting and overfitting, successfully capturing the underlying patterns in the data without being overly sensitive to noise. At this stage, the training error is sufficiently low, reflecting that the model has effectively learned from the dataset, while the test error is also minimized, demonstrating strong generalization to unseen data. The balance in the bias-variance trade-off ensures that the model neither oversimplifies the problem nor becomes excessively complex. The model performs well in precision and accuracy. Being in the ideal complexity range indicates that the model is making reliable predictions. To maintain this performance, we can focus on careful regularization, monitor training and validation performance, fine-tune hyperparameters, and, if feasible, incorporate more diverse training data to further enhance generalization.  
 
