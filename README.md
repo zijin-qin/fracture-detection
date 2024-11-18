@@ -31,4 +31,4 @@ Our model is a convolutional neural network (CNN) with three convolutional layer
 
 The performance of the model on the training set shows a loss of approximate 0.6756 and an accuracy of about 75.22%. The performance of the model on the validation set shows a loss of approximately 0.5254 and an accuracy of about 82.28%. The performance of the model on the testing set shows a loss of approximately 0.6286 and an accuracy of about 78.32%. This suggests that the model generalizes well but experiences some overfitting. 
 
-We can improve the model by enhancing its performance on both the training and test sets. Adding regularization techniques will help prevent overfitting. 
+We can improve the model by enhancing its performance on both the training and test sets. Adding regularization techniques will help prevent overfitting. Modifying the architecture to add more layers can also allow for more complex features to be extracted. Smaller batch sizes can also allow for more complex patterns to be learned, even if it may increase training time.
