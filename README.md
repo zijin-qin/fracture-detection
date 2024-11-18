@@ -25,7 +25,7 @@ We want to resize the images to a uniform dimension. We also want to convert our
 #### Data Variability
 As part of our data pre-processing steps, we also want to apply transformations to the images to increase data variability. We can also zoom in or out, change the coordinates of the images, or modify the images through inclusion of noise to further enhance variability for training our model. 
 
-Link to jupyter notebook: [View the Notebook](eda_milestone2.ipynb)
+Link to Milestone 2 Jupyter notebook: [View the Notebook](eda_milestone2.ipynb)
 
 ## Milestone 3
 ### Where does your model fit in the fitting graph?
@@ -75,4 +75,4 @@ The performance of the model on the training set shows a loss of approximate 0.6
 
 We can improve the model by enhancing its performance on both the training and test sets. Adding regularization techniques will help prevent overfitting. Modifying the architecture to add more layers can also allow for more complex features to be extracted. Smaller batch sizes can also allow for more complex patterns to be learned, even if it may increase training time.
 
-Link to jupyter notebook: [View the Notebook](CNN_notebook.ipynb)
+Link to Milestone 3 Jupyter notebook: [View the Notebook](CNN_notebook.ipynb)
