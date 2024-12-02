@@ -76,9 +76,13 @@ Link to Milestone 3 Jupyter notebook: [View the Notebook](CNN_notebook.ipynb)
 
 ## Milestone 4
 ### Where does your model fit in the fitting graph? 
-Because training accuracy is around 0.98 and validation accuracy is 0.62 after training for 20 epochs, the model seems to be overfitting. The large difference between the training and validation accuracy implies that the model may be overfitting to the specific patterns of the training data and therefore is not able to generalize well. We may need to employ some regularization techniques and continue finetuning the hyperparameters in order to prevent overfitting. 
+Because training accuracy is in the high 90s while the validation accuracy low 60s after training for 20 epochs, the model seems to be overfitting. The large difference between the training and validation accuracy implies that the model may be overfitting to the specific patterns of the training data and therefore is not able to generalize well. We may need to employ some regularization techniques and continue finetuning the hyperparameters in order to prevent overfitting. 
 
 ### What are the next models you are thinking of and why?
 The next model we are thinking of implementing is Support Vector Machines (SVMs) which are particularly effective for complex images and finding the optimal decision boundary between our two output classes. Because the SVM model works by finding a hyperplane that maximizes the margin between output classes, we believe there will be high accuracy and precision and also plan to utilize the kernel trick. 
 
+### What is the conclusion of your 2nd model? What can be done to possibly improve it?
+To help prevent class imbalances, we tried random oversampling of the minority output label (which is fractured images) in this case. The training accuracy is around 98.88 and the training loss is 0.0353. On the other hand, the validation accuracy is 61.81% while the validation loss is 1.7631. Because there appears to be a significant difference between the training loss and accuracy and the validation loss and accuracy, our model may not be able to generalize well to new unseen data even though there is a very high training accuracy. 
+
+We may need to implement techniques such as early stopping (stopping training when there is no significant improvement in validation accuracy after a specific number of epochs) and cross-validation as well as dropout. Continuing to finetune the model hyperparameters with tools such as GridSearch may also help us find a model architecture that is able to learn the training data well while also being able to generalize to new data. 
 
