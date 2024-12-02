@@ -73,3 +73,12 @@ The performance of the 1st model on the training set shows a loss of approximate
 We can improve the model by enhancing its performance on both the training and test sets through tuning hyperparameters. Adding regularization techniques will help prevent overfitting if needed. Modifying the architecture to add more layers can also allow for more complex features to be extracted. Smaller batch sizes can also allow for more complex patterns to be learned, even if it may increase training time.
 
 Link to Milestone 3 Jupyter notebook: [View the Notebook](CNN_notebook.ipynb)
+
+## Milestone 4
+### Where does your model fit in the fitting graph? 
+Because training accuracy is around 0.98 and validation accuracy is 0.62 after training for 20 epochs, the model seems to be overfitting. The large difference between the training and validation accuracy implies that the model may be overfitting to the specific patterns of the training data and therefore is not able to generalize well. We may need to employ some regularization techniques and continue finetuning the hyperparameters in order to prevent overfitting. 
+
+### What are the next models you are thinking of and why?
+The next model we are thinking of implementing is Support Vector Machines (SVMs) which are particularly effective for complex images and finding the optimal decision boundary between our two output classes. Because the SVM model works by finding a hyperplane that maximizes the margin between output classes, we believe there will be high accuracy and precision and also plan to utilize the kernel trick. 
+
+
