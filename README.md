@@ -99,5 +99,5 @@ We may need to implement techniques such as early stopping (stopping training wh
 
 Comparing the vision transformer model to the first model (the CNN) we trained, the CNN has a higher training and validation accuracy, although that model was underfitting. However, we plan to continue to train both models and improve their accuracy and performance while evaluating at other metrics such as precision and recall.
 
-Link to Milestone 3 Jupyter notebook: [View the Notebook](VIT_notebook.ipynb)
+Link to Milestone 4 Jupyter notebook: [View the Notebook](VIT_notebook.ipynb)
 
