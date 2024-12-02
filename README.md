@@ -89,5 +89,7 @@ To help prevent class imbalances, we tried random oversampling of the minority o
 
 We may need to implement techniques such as early stopping (stopping training when there is no significant improvement in validation accuracy after a specific number of epochs) and cross-validation. The model may also be too complex which could also be contributing to the overfitting.  Continuing to finetune the model hyperparameters with tools such as GridSearch may also help us find a model architecture that is able to learn the training data well while also being able to generalize to new data.
 
-Comparing the vision transformer model to the first model (the CNN) we trained, the CNN has a higher training and validation accuracy, although that model was underfitting. However, we plan to continue to train both models and improve their accuracy and performance while evaluating at other metrics such as precision and recall. 
+Comparing the vision transformer model to the first model (the CNN) we trained, the CNN has a higher training and validation accuracy, although that model was underfitting. However, we plan to continue to train both models and improve their accuracy and performance while evaluating at other metrics such as precision and recall.
+
+Link to Milestone 3 Jupyter notebook: [View the Notebook](VIT_notebook.ipynb)
 
