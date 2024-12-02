@@ -93,14 +93,14 @@ This milestone, we focused on implementing a new model : the vision transformer 
 1e-06             |learning_rate
 
 And here are the metrics from the model: 
-True Positive: 49
-False Positive: 65
-True Negative: 263
-False Negative: 32
-Accuracy: 0.7628361858190709
-Recall: 0.6049382716049383
-Precision: 0.4298245614035088
-F1 Score: 0.5025641025641027
+- **True Positive**: 49  
+- **False Positive**: 65  
+- **True Negative**: 263  
+- **False Negative**: 32  
+- **Accuracy**: 0.7628361858190709  
+- **Recall**: 0.6049382716049383  
+- **Precision**: 0.4298245614035088  
+- **F1 Score**: 0.5025641025641027
 
 ### What is the conclusion of your 2nd model? What can be done to possibly improve it?
 To help prevent class imbalances, we tried random oversampling of the minority output label (which is fractured images) in this case. The training accuracy is around 98.88 and the training loss is 0.0353. On the other hand, the validation accuracy is 61.81% while the validation loss is 1.7631. Because there appears to be a significant difference between the training loss and accuracy and the validation loss and accuracy, our model may not be able to generalize well to new unseen data even though there is a very high training accuracy. 
