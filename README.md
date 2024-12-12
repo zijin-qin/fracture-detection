@@ -135,6 +135,8 @@ The architecture of EfficientNetB0 is centered around Mobile Inverted Bottleneck
 
 EfficientNetB0 leverages pre-trained weights from ImageNet, enabling faster convergence and better generalization on our fracture detection dataset. Compared to the previously implemented CNN and ViT models, EfficientNetB0 provides a complementary approach by combining efficiency, scalability, and strong generalization capabilities.
 
+![image](https://github.com/user-attachments/assets/45c7bc19-b9d5-49d2-8f16-e7a346dd1c16)
+
 # Results:
 This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
 
@@ -154,8 +156,13 @@ The hyperparameters that resulted in the highest validation accuracy are as foll
 - Learning Rate: 0.0028
 These hyperparameter values were selected based on their ability to maximize the validation accuracy during the tuning process.
 
+![image](https://github.com/user-attachments/assets/d796acd2-3d33-4398-a6eb-b50befe3beef)
+
 For the Vision Transformer baseline model, the best results were achieved with a patch size of 8, an embedding dimension of 256, and 2 attention heads. The optimal number of layers was 2, with an MLP dimension of 256. A dropout rate of 0.5 and a learning rate of 1e-05 were also found to be the most effective for the model.
+
 Vision Transformer after hyperparameter tuning:
+
+![image](https://github.com/user-attachments/assets/0904eab0-39fb-478b-b996-0eda377cd74f)
 
 Trial 5 Complete [00h 06m 08s]
 val_accuracy: 0.793398529291153
@@ -171,6 +178,10 @@ Best Dropout Rate: 0.5
 Best Learning Rate: 1e-05
 
 For the EfficientNet B0 model, the test loss was 0.6928, and the test accuracy was approximately 59.72%. These results highlight the model's performance on the test set, providing an indication of its generalization ability after training. We also computed model metrics including the precision, recall, and a confusion matrix:
+
+![image](https://github.com/user-attachments/assets/5153595a-0f33-4dbd-b975-c3d5870058f5)
+
+![image](https://github.com/user-attachments/assets/d0e9868a-45a3-4ebf-af02-e5bd55655698)
 
 # Discussion:
 ### CNN baseline model:
@@ -237,3 +248,5 @@ There are several avenues for improvement and exploration that we wish we could 
 Another promising avenue involves incorporating ConvNext, a state-of-the-art convolutional model inspired by Vision Transformers. ConvNext retains the architectural simplicity of traditional CNNs while incorporating innovations that have propelled transformer architectures to prominence. By exploring ConvNext as a fourth model in future work, it could serve as a strong standalone contender or as a component of an ensemble strategy. Its design, emphasizing efficiency and performance, aligns well with the need for scalable and interpretable solutions in medical imaging.
 
 Looking at the limitations of this study, future work should focus on expanding the dataset by including more samples from different demographics to make the model more widely applicable. In addition, using advanced data augmentation methods and exploring self-supervised learning could help the model perform better with limited labeled data. It would also be beneficial to add features like localization and segmentation to the model, so it can accurately identify fracture locations and provide more detailed diagnostic support.
+
+The potential impact of developing a highly accurate fracture detection model is significant. Beyond enhancing diagnostic accuracy, such models have the potential to increase access to healthcare, particularly in resource-limited settings, by supporting clinicians in their decision-making. Additionally, the use of deep learning in medical imaging drives advancements in computer-aided diagnostics, paving the way for a future where AI-powered tools play a central role in clinical workflows. The findings of this study not only demonstrate the transformative potential of machine learning in medical imaging but also emphasize the broader societal benefits of these technologies in improving healthcare delivery on a global scale.
