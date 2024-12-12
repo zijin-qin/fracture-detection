@@ -92,6 +92,8 @@ After completing the aforementioned preprocessing steps—resizing, grayscale co
 ### Data Variability
 As part of our data pre-processing steps, we also want to apply transformations to the images to increase data variability. We can also zoom in or out, change the coordinates of the images, or modify the images through inclusion of noise to further enhance variability for training our model.
 
+[Milestone 2 Preprocessing Code](https://github.com/zijin-qin/fracture-detection/blob/Milestone5/milestone2_final.ipynb)
+
 ## Discussion of Models:
 ### Model 1 CNN:
 We developed and trained two distinct convolutional neural network (CNN) models, iterating through several rounds of hyperparameter tuning to optimize performance. The first baseline model we then optimized consisted of a CNN architecture with three convolutional layers, each employing progressively larger filter sizes. This was followed by batch normalization, ReLU activations, a global average pooling layer, and a dense output layer. During the hyperparameter tuning process, we experimented with variations in the number of filters and the number of convolutional layers to enhance the model's accuracy. The detailed architecture outlined below yielded the best performance in terms of accuracy:
@@ -121,7 +123,7 @@ Here was our hyperparameter search space:
 Here is the detailed model architecture for our second model after hyperparameter tuning:
 
 ![image](https://github.com/user-attachments/assets/788dbd76-7c5c-4da4-b4bb-0ec296b75d1f)
-
+[CNN](https://github.com/zijin-qin/fracture-detection/blob/Milestone5/CNN_hyper_notebook.ipynb)
 ### Model 2 ViT:
 The ViT (Vision Transformer) implemented in this project is an advanced model adapted from transformer architecture. Unlike CNNs, the ViT processes images by dividing them into non overlapping patches and treating those patches as a sequence. The model begins by dividing the input image into patches of 16*16, where each patch is like a “token.” The patches layer facilitates this by extracting patches and reshaping them into a sequence of flattened patches. The number of patches, NUM_PATCHES, is derived by dividing the image dimensions by the patch patch size. The patch is then projected into a higher_dimensional space (D_MODEL) using a dense layer in Patch_Encoder. This layer also adds positional embeddings to patches to retain information, as transformers lack sense of locality.
 
@@ -131,7 +133,7 @@ After processing through the transformer layers, a global representation of the 
 
 ![image](https://github.com/user-attachments/assets/fdda73e4-4a2b-4e29-b294-dd88823f54e1)
 
-
+[ViT](https://github.com/zijin-qin/fracture-detection/blob/Milestone5/VIT_notebook.ipynb)
 ### Model 3 EfficientNetB0:
 
 The architecture of EfficientNetB0 is centered around Mobile Inverted Bottleneck Convolution (MBConv) layers, which use depthwise separable convolutions to reduce computational cost without compromising on accuracy. It also incorporates Swish activation, a smoother non-linear activation function that enhances gradient flow and overall performance. The network is structured with an initial convolutional stem, a series of MBConv blocks to extract features at multiple resolutions, and a final classification head that includes global average pooling, dropout, and a dense layer with a sigmoid activation function for binary classification.
@@ -139,7 +141,7 @@ The architecture of EfficientNetB0 is centered around Mobile Inverted Bottleneck
 EfficientNetB0 leverages pre-trained weights from ImageNet, enabling faster convergence and better generalization on our fracture detection dataset. Compared to the previously implemented CNN and ViT models, EfficientNetB0 provides a complementary approach by combining efficiency, scalability, and strong generalization capabilities.
 
 ![image](https://github.com/user-attachments/assets/45c7bc19-b9d5-49d2-8f16-e7a346dd1c16)
-
+[EfficientNetB0](https://github.com/zijin-qin/fracture-detection/blob/Milestone5/EfficientNetB0_model.ipynb)
 # Results:
 This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
 
