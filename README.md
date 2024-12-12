@@ -27,11 +27,11 @@ We decided on a CNN model because convolutional neural networks are particularly
 We are also considering implementing another state of the art model, Vision Transformer (ViT) due to its promising performance in image classification tasks, particularly in domains like medical imaging. Unlike CNNs, which rely on local receptive fields to capture spatial patterns, Vision Transformers excel at capturing long-range dependencies across the entire image thanks to their self-attention mechanisms. These transformers divide images into smaller, fixed-size patches, treating each patch as a sequence input to a transformer model, effectively flattening the image into a sequence of tokens. This unique approach allows the model to learn relationships not only within localized regions of the image but also across the entire spatial context, making it particularly useful for detecting subtle or global patterns that might be overlooked by traditional CNN architectures.
 In medical imaging, where complex relationships between features can be critical for accurate diagnosis—such as the interactions between different regions of a bone fracture—ViTs offer an advantage by enabling the model to capture these global dependencies. The ability to model long-range interactions in the data may lead to more robust and precise feature extraction, enhancing the model's performance, especially when dealing with intricate or large-scale images. Given the growing success of Vision Transformers in image classification tasks, especially in fields like medical imaging and remote sensing, we believe that experimenting with this architecture could potentially improve our model's accuracy and provide an alternative approach to the more traditional CNN-based solutions. The vision transformer consists of an encode and position embedding as shown below:
 
-# Methods:
-This section will include the exploration results, preprocessing steps, models chosen in the order they were executed. You should also describe the parameters chosen. Please make sub-sections for every step. i.e Data Exploration, Preprocessing, Model 1, Model 2, additional models are optional. Please note that models can be the same i.e. DNN but different versions of it if they are distinct enough. Changes can not be incremental. You can put links here to notebooks and/or code blocks using three ` in markup for displaying code. so it would look like this: ``` MY CODE BLOCK ```
-Note: A methods section does not include any why. the reason why will be in the discussion section. This is just a summary of your methods
+![image](https://github.com/user-attachments/assets/3cae4af8-f6c0-488c-8f23-4c7489ad9c91)
 
-## Data Exploration:
+![The-architecture-of-EfficientNetB0-CNN-EfficientNetB0-uses-slightly-larger-mobile](https://github.com/user-attachments/assets/96e3c9d9-4184-48b3-a8d1-e0b97736894f)
+
+# Methods:
 
 ### Dataset Description
 The FracAtlas dataset is a collection of 4,083 image files, each accompanied by a corresponding text file that contains information about any fractures present within the image. The images represent two categories: fractured bones and non-fractured bones. Specifically, there are 717 images of fractured bones and 3,366 images of non-fractured bones. This class imbalance is important to consider during model training, as it may influence the performance of the machine learning algorithm.
@@ -48,10 +48,8 @@ As part of the initial exploratory analysis, we visualized several key aspects o
 
 ### Class Distribution
 We examined the distribution of the two classes—‘Fractured’ and ‘Non_fractured’—and found that the total number of images was consistent across both categories, summing to 4,083 images. The breakdown is as follows:
-
-717 images of fractured bones (class 1)
-
-3,366 images of non-fractured bones (class 0)
+- 717 images of fractured bones (class 1)
+- 3,366 images of non-fractured bones (class 0)
 
 This imbalance is an important consideration when training machine learning models, as it may introduce bias toward the majority class (non-fractured). As a result, techniques like SMOTE (Synthetic Minority Oversampling Technique) were applied to address this issue.
 
