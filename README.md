@@ -196,6 +196,7 @@ To help prevent class imbalances, we tried random oversampling of the minority o
 We may need to implement techniques such as early stopping (stopping training when there is no significant improvement in validation accuracy after a specific number of epochs) and cross-validation. The model may also be too complex which could also be contributing to the overfitting. Continuing to finetune the model hyperparameters with tools such as GridSearch may also help us find a model architecture that is able to learn the training data well while also being able to generalize to new data.Because training accuracy is in the high 90s while the validation accuracy low 60s after training for 20 epochs, the model seems to be overfitting. The large difference between the training and validation accuracy implies that the model may be overfitting to the specific patterns of the training data and therefore is not able to generalize well. We may need to employ some regularization techniques and continue fine tuning the hyperparameters in order to prevent overfitting.
 
 Comparing the vision transformer model to the first model (the CNN) we trained, the CNN has a higher training and validation accuracy, although that model was underfitting. However, we plan to continue to train both models and improve their accuracy and performance while evaluating other metrics such as precision and recall. We modified the hyperparameters and got the following metrics: 
+```
 True Positive: 49
 False Positive: 65
 True Negative: 263
@@ -204,7 +205,9 @@ Accuracy: 0.7628361858190709
 Recall: 0.6049382716049383
 Precision: 0.4298245614035088
 F1 Score: 0.5025641025641027
+```
 The hyperparameters we used:
+```
 patch_size 64
 D_model: 512
 num_heads 8
@@ -212,9 +215,9 @@ Num_layers: 2
 Mlp_dim: 512 
 Dropout_rate: 0.3  
 learning_rate: 1e-06
-
-Upon further fine tuning of these parameters, 
-
+```
+Upon further fine tuning, we obtained the following hyperparameters:
+```
 Best Patch Size: 8
 Best Embedding Dimension: 256
 Best Number of Heads: 2
@@ -222,8 +225,8 @@ Best Number of Layers: 2
 Best MLP Dim: 256
 Best Dropout Rate: 0.5
 Best Learning Rate: 1e-05
-
-We were able to achieve for 1.409806 for test loss and 0.7750611305236816 for Test Accuracy, making it our best performing model yet. 
+```
+We were able to achieve 1.409806 for test loss and 0.7750611305236816 for test accuracy, making it our best performing model yet. 
 
 ### EfficientNetB0 model:
 The results of the EfficientNetB0 model reveal significant challenges with both training and test performance, suggesting issues of underfitting. During training, the model’s accuracy fluctuated around 50%, and the loss hovered near 0.693, which is indicative of a model that is not learning meaningful features from the data. This is further corroborated by the validation accuracy, which, while initially reaching high values (above 80%), is unstable and potentially misleading due to the model’s inability to separate the two classes effectively, as indicated by the precision and recall metrics.
@@ -250,4 +253,35 @@ Another promising avenue involves incorporating ConvNext, a state-of-the-art con
 
 Looking at the limitations of this study, future work should focus on expanding the dataset by including more samples from different demographics to make the model more widely applicable. In addition, using advanced data augmentation methods and exploring self-supervised learning could help the model perform better with limited labeled data. It would also be beneficial to add features like localization and segmentation to the model, so it can accurately identify fracture locations and provide more detailed diagnostic support.
 
-The potential impact of developing a highly accurate fracture detection model is significant. Beyond enhancing diagnostic accuracy, such models have the potential to increase access to healthcare, particularly in resource-limited settings, by supporting clinicians in their decision-making. Additionally, the use of deep learning in medical imaging drives advancements in computer-aided diagnostics, paving the way for a future where AI-powered tools play a central role in clinical workflows. The findings of this study not only demonstrate the transformative potential of machine learning in medical imaging but also emphasize the broader societal benefits of these technologies in improving healthcare delivery on a global scale.
+As discussed, the potential impact of developing a highly accurate fracture detection model is a significant step towards more equitable healthcare. The use of Deep learning in medical imaging will advance diagnostics supported by technology, opening new doors for the use of AI-powered tools to play a central role in hospitals and patient care. The findings of this study not only demonstrate the transformative potential of machine learning in medical imaging but also emphasize the broader societal benefits of these technologies in improving healthcare delivery on a global scale.
+
+# Statement of Collaboration:
+
+### Dhruv Susheelkar: Developer 1
+We worked as a team, dividing work up equally. Deepika and Vaishnavi helped organize us and delegated tasks to each other. For milestone 2, I wrote code for the initial setup for the notebook. For milestone 3, I contributed to the readme answering the questions and revising the code. For milestone 4, I wrote the preliminary model for the VIT and revised readme answers. For Milestone 5, I wrote the final report with everyone and revised the new models. I also gave everyone their title and roles.
+
+### Deepika Senthil: Delegate Developer 1
+Throughout the project, I served as one of the project managers, overseeing task delegation and ensuring complete submissions. For Milestone 1, I contributed by identifying relevant datasets and writing the abstract. In Milestone 2, I assisted with plotting example images to determine what additional preprocessing was necessary (EDA task 3), and also consolidated the team’s work for the final submission. During Milestone 3, I focused on preprocessing tasks, including removing corrupted images, normalizing input image values, and encoding labels. For Milestone 4, I developed initial code for fine-tuning Dhruv’s VIT model and supported the submission process. In Milestone 5, I redesigned the architecture of the CNN and fine-tuned it for improved performance, plus assisted with structuring the report.
+
+### Zijin Qin:  Project Contributor 1
+We worked together as a team. For Milestone 1, I contributed by exploring potential choices of datasets. For Milestone 2, I ran preprocessing on a smaller part of the dataset to compare image files and label files. I also contributed to the data exploratory section of the write-up. For Milestone 3, I contributed to the preprocessing pipeline by performing grayscale conversion, normalization, and standardization on the image files. I also contributed to the conclusion and suggested improvements for future models in the write-up. For Milestone 4, I helped analyze the ViT model by writing the code to compute model metrics and assisted in running the ViT model due to technical limitations with other group members’ devices. For Milestone 5, I worked with Subika to develop the code for our EfficientNet B0 model. I also evaluated the performance of the model on test data and created accuracy graphs. I updated the data exploratory and preprocessing code to match the evolving nature of the machine learning pipeline. I also contributed to the final project write-up. 
+
+### Nicholas Droppa: Project Contributor 2 and Code Runner
+I helped with the coding for the CNN and ViT models. I also wrote the code for grouping and splitting the data into training/validation/testing sets, and I implemented SMOTE. I contributed to discussions about the direction of the project with the team and made suggestions for certain aspects of each submission. My machine has an RTX 3060, so I also contributed by running some intensive calculations locally. We overall worked effectively as a team, with some members handling more organizational tasks like scheduling meetings and organizing the repository, while other members handled more technical work. We didn’t assign designated roles, since each team member worked on multiple aspects of the project.
+
+### Vaishnavi Ramanujan:  Delegate Developer 2
+For this project, I served as the co-project manager with Deepika and helped coordinate tasks among the group members and with compiling final submissions. For the first milestone, I helped the group find datasets for the project and worked on writing the project. For milestone 2, I worked with Subika on preprocessing the images and documenting our progress in the Readme. For milestone 3, I developed the baseline CNN model that we used. For milestone 4, I wrote the readme, summarizing the team progress and analyzing our results. For the final milestone, I worked with the entire team to write the final report. Overall we were able to effectively delegate tasks and work as a team to help teammates that are struggling. 
+
+### Subika Haider: Developer 2
+Deepika Senthil and Vaishnavi Ramanujan helped organise the entire group and delegated tasks, as well as organised meetings to discuss our plans for each milestone. For milestone 1, I helped the group find datasets for our project. For milestone 2, I wrote code to preprocess images to ensure input consistency along with Ramanujan. For milestone 3, I wrote code to implement bounding box visualizations for images to highlight areas of interest. I also collaborated with a couple other team members to answer questions in the project write-up. For milestone 4, I revised Senthil’s code for fine tuning the VIT and made optimization related changes to it. For milestone 5, I wrote the preliminary model for the EfficientNetB0 along with Zijin Qin and contributed towards the final project write-up.
+
+ChatGPT was utilized to help structure the writing, enhancing its flow and coherence, while also proofreading the content to ensure clarity, accuracy, and proper grammar.
+
+# Works Cited: 
+https://www.researchgate.net/figure/The-architecture-of-EfficientNetB0-CNN-EfficientNetB0-uses-slightly-larger-mobile_fig2_359452254
+
+https://arxiv.org/pdf/1506.02640
+
+https://medium.com/@navarai/unveiling-the-diversity-a-comprehensive-guide-to-types-of-cnn-architectures-9d70da0b4521
+
+https://paperswithcode.com/method/vision-transformer
