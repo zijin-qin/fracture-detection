@@ -140,7 +140,7 @@ The architecture of EfficientNetB0 is centered around Mobile Inverted Bottleneck
 
 EfficientNetB0 leverages pre-trained weights from ImageNet, enabling faster convergence and better generalization on our fracture detection dataset. Compared to the previously implemented CNN and ViT models, EfficientNetB0 provides a complementary approach by combining efficiency, scalability, and strong generalization capabilities.
 
-![image](https://github.com/user-attachments/assets/45c7bc19-b9d5-49d2-8f16-e7a346dd1c16)
+![image](https://github.com/user-attachments/assets/45c7bc19-b9d5-49d2-8f16-e7a346dd1c16)  
   [link to EfficientNetB0](https://github.com/zijin-qin/fracture-detection/blob/Milestone5/EfficientNetB0_model.ipynb)
 # Results:
 This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
