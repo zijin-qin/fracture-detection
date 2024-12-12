@@ -163,7 +163,7 @@ For the Vision Transformer baseline model, the best results were achieved with a
 Vision Transformer after hyperparameter tuning:
 
 ![image](https://github.com/user-attachments/assets/0904eab0-39fb-478b-b996-0eda377cd74f)
-
+```
 Trial 5 Complete [00h 06m 08s]
 val_accuracy: 0.793398529291153
 
@@ -176,6 +176,7 @@ Best Number of Layers: 2
 Best MLP Dim: 256
 Best Dropout Rate: 0.5
 Best Learning Rate: 1e-05
+```
 
 For the EfficientNet B0 model, the test loss was 0.6928, and the test accuracy was approximately 59.72%. These results highlight the model's performance on the test set, providing an indication of its generalization ability after training. We also computed model metrics including the precision, recall, and a confusion matrix:
 
