@@ -6,8 +6,6 @@ This study leverages the FracAtlas dataset, a comprehensive collection of X-ray 
 The broader implications of developing a highly accurate fracture detection model are profound. In addition to improving diagnostic precision, such models can democratize access to healthcare by supporting clinicians in resource-constrained settings. Furthermore, the integration of deep learning into medical imaging fosters advancements in computer-aided diagnostics, paving the way for a future where AI-driven tools significantly enhance clinical workflows. The outcomes of this study not only underscore the potential of machine learning in transforming medical imaging but also highlight the societal impact of such technologies in improving healthcare delivery worldwide.
 
 # Figures:
-Your report should include relevant figures of your choosing to help with the narration of your story, including legends (similar to a scientific paper). For reference you search machine learning and your model in google scholar for reference examples.
-
 The following are a selection of images from the training dataset, along with their corresponding labels. These images represent both fractured and non-fractured bone samples, providing a diverse range of examples for the model to learn from. The labels, which are encoded as '0' for non-fractured and '1' for fractured, are aligned with the images to indicate the correct classification. This visual representation allows us to verify the quality and relevance of the data, ensuring that the model is trained on accurately labeled and high-quality samples. By showcasing these images, we can also highlight the variability in the dataset, which includes differences in bone structures, fracture types, and imaging conditions, further contributing to the robustness of the model training process. 
 
 ![image](https://github.com/user-attachments/assets/13b16ef6-9303-465e-ba5c-79ff2ec6d134)
@@ -32,7 +30,7 @@ In medical imaging, where complex relationships between features can be critical
 ![The-architecture-of-EfficientNetB0-CNN-EfficientNetB0-uses-slightly-larger-mobile](https://github.com/user-attachments/assets/96e3c9d9-4184-48b3-a8d1-e0b97736894f)
 
 # Methods:
-
+## Data Exploration:
 ### Dataset Description
 The FracAtlas dataset is a collection of 4,083 image files, each accompanied by a corresponding text file that contains information about any fractures present within the image. The images represent two categories: fractured bones and non-fractured bones. Specifically, there are 717 images of fractured bones and 3,366 images of non-fractured bones. This class imbalance is important to consider during model training, as it may influence the performance of the machine learning algorithm.
 
@@ -90,3 +88,152 @@ After completing the aforementioned preprocessing steps—resizing, grayscale co
 
 ### Data Variability
 As part of our data pre-processing steps, we also want to apply transformations to the images to increase data variability. We can also zoom in or out, change the coordinates of the images, or modify the images through inclusion of noise to further enhance variability for training our model.
+
+## Discussion of Models:
+### Model 1 CNN:
+We developed and trained two distinct convolutional neural network (CNN) models, iterating through several rounds of hyperparameter tuning to optimize performance. The first baseline model we then optimized consisted of a CNN architecture with three convolutional layers, each employing progressively larger filter sizes. This was followed by batch normalization, ReLU activations, a global average pooling layer, and a dense output layer. During the hyperparameter tuning process, we experimented with variations in the number of filters and the number of convolutional layers to enhance the model's accuracy. The detailed architecture outlined below yielded the best performance in terms of accuracy:
+
+![image](https://github.com/user-attachments/assets/de0435d9-fa8d-4693-bc74-c479c957137a)
+
+We also decided to train a CNN second model, consisting of a sequential neural network, and started with a different set of hyperparameters and model architecture, which we then fine tuned.  The initial layer is a convolutional layer with 64 filters, followed by batch normalization. Then, a second convolutional layer with 128 filters and batch normalization is employed. A global average pooling layer then reduces spatial dimensions. Finally, a dense layer with 512 units feeds into the output layer.
+
+Here is the detailed model architecture for our second model:
+
+![image](https://github.com/user-attachments/assets/3d18f01b-bf39-463c-bb04-f3d7722a45b3)
+
+### Hyperparameter tuning:
+Our second model showed promising results, so we decided to implement a hyperparameter tuning process. After preprocessing the data (splitting into training and validation sets, sexising the images to 128x128 pixels to ensure consistency and compatibility with the CNN model), a hyperparameter search is conducted using the RandomSearch tuner. Each configuration trained for 5 epochs wth a batch size of 16. The best hyperparameter combination is determined based on validation accuracy, and early stopping prevents overfitting by halting training if validation loss doesn't improve for 3 consecutive epochs.
+
+Here was our hyperparameter search space:
+- conv_1_filters: 16, 32, 48, 64, 80, 96, 112, 128
+- conv_1_kernel: 3, 5
+- conv_2_filters: 32, 48, 64, 80, 96, 112, 128
+- conv_2_kernel: 3, 5
+- conv_3_filters: 64, 96, 128
+- conv_3_kernel: 3, 5
+- dense_units: 64, 128, 192, 256, 320, 384, 448, 512
+- optimizer: Adam, SGD
+- learning_rate: 0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1
+
+Here is the detailed model architecture for our second model after hyperparameter tuning:
+
+![image](https://github.com/user-attachments/assets/788dbd76-7c5c-4da4-b4bb-0ec296b75d1f)
+
+### Model 2 ViT:
+The ViT (Vision Transformer) implemented in this project is an advanced model adapted from transformer architecture. Unlike CNNs, the ViT processes images by dividing them into non overlapping patches and treating those patches as a sequence. The model begins by dividing the input image into patches of 16*16, where each patch is like a “token.” The patches layer facilitates this by extracting patches and reshaping them into a sequence of flattened patches. The number of patches, NUM_PATCHES, is derived by dividing the image dimensions by the patch patch size. The patch is then projected into a higher_dimensional space (D_MODEL) using a dense layer in Patch_Encoder. This layer also adds positional embeddings to patches to retain information, as transformers lack sense of locality.
+
+The encoded patches are passed through a series of transformer layers, with NUM_LAYERS = 4. Each layer includes multi-head self-attention (with NUM_HEADS = 4) and a multi-layer perceptron (MLP) block. The self-attention mechanism enables the model to learn global relationships between patches, capturing context across the entire image. Layer normalization and residual connections ensure stable training and enhance feature learning. The MLP block, parameterized by MLP_DIM = 256, further refines the patch representations.
+
+After processing through the transformer layers, a global representation of the image is derived using global average pooling. This pooled representation is fed into a dense classification head with a softmax activation to produce the final class probabilities for NUM_CLASSES, which in this case corresponds to fractured and non-fractured categories. Dropout (DROPOUT_RATE = 0.1) is applied throughout the model to prevent overfitting.
+
+![image](https://github.com/user-attachments/assets/fdda73e4-4a2b-4e29-b294-dd88823f54e1)
+
+
+### Model 3 EfficientNetB0:
+
+The architecture of EfficientNetB0 is centered around Mobile Inverted Bottleneck Convolution (MBConv) layers, which use depthwise separable convolutions to reduce computational cost without compromising on accuracy. It also incorporates Swish activation, a smoother non-linear activation function that enhances gradient flow and overall performance. The network is structured with an initial convolutional stem, a series of MBConv blocks to extract features at multiple resolutions, and a final classification head that includes global average pooling, dropout, and a dense layer with a sigmoid activation function for binary classification.
+
+EfficientNetB0 leverages pre-trained weights from ImageNet, enabling faster convergence and better generalization on our fracture detection dataset. Compared to the previously implemented CNN and ViT models, EfficientNetB0 provides a complementary approach by combining efficiency, scalability, and strong generalization capabilities.
+
+# Results:
+This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
+
+Due to the iterative nature of the machine learning pipeline, we went back and modified some of the preprocessing and model code from the previous milestones. We then found the following results:
+
+For the baseline CNN model, the training accuracy was approximately 51.09%, with a training loss of 0.8022. The model achieved a validation accuracy of 46.69%, accompanied by a validation loss of 0.8305.
+After tuning the hyperparameters, the optimized CNN model achieved a training accuracy of 65.48%, with a training loss of 1.3481. The validation accuracy improved to 63.07%, although the validation loss increased to 1.4335. The test accuracy for the hyperparameter-tuned model was 61.11%, with a corresponding test loss of 1.5177.
+The hyperparameters that resulted in the highest validation accuracy are as follows:
+- Conv_1 Filters: 48
+- Conv_1 Kernel Size: 5
+- Conv_2 Filters: 112
+- Conv_2 Kernel Size: 5
+- Conv_3 Filters: 96
+- Conv_3 Kernel Size: 5
+- Dense Units: 64
+- Optimizer: SGD
+- Learning Rate: 0.0028
+These hyperparameter values were selected based on their ability to maximize the validation accuracy during the tuning process.
+
+For the Vision Transformer baseline model, the best results were achieved with a patch size of 8, an embedding dimension of 256, and 2 attention heads. The optimal number of layers was 2, with an MLP dimension of 256. A dropout rate of 0.5 and a learning rate of 1e-05 were also found to be the most effective for the model.
+Vision Transformer after hyperparameter tuning:
+
+Trial 5 Complete [00h 06m 08s]
+val_accuracy: 0.793398529291153
+
+Best val_accuracy So Far: 0.810513436794281
+Total elapsed time: 00h 24m 06s
+Best Patch Size: 8
+Best Embedding Dimension: 256
+Best Number of Heads: 2
+Best Number of Layers: 2
+Best MLP Dim: 256
+Best Dropout Rate: 0.5
+Best Learning Rate: 1e-05
+
+For the EfficientNet B0 model, the test loss was 0.6928, and the test accuracy was approximately 59.72%. These results highlight the model's performance on the test set, providing an indication of its generalization ability after training. We also computed model metrics including the precision, recall, and a confusion matrix:
+
+# Discussion:
+### CNN baseline model:
+
+The performance of the 1st model on the training set shows a loss of approximate 0.6756 and an accuracy of about 75.22%. The performance of the model on the validation set shows a loss of approximately 0.5254 and an accuracy of about 82.28%. The performance of the model on the testing set shows a loss of approximately 0.6286 and an accuracy of about 78.32%. This suggests that the model might be underfitting as it is not learning the training data well enough, likely because of the imbalance in the two label classes. The dataset primarily consists of non fractured images (around 80%) so we need to ensure the training, test, and validation sets have a more equal split between the classes.
+
+We can improve the model by enhancing its performance on both the training and test sets through tuning hyperparameters. Adding regularization techniques will help prevent overfitting if needed. Modifying the architecture to add more layers can also allow for more complex features to be extracted. Smaller batch sizes can also allow for more complex patterns to be learned, even if it may increase training time. We believe Our model is underfitting on the fitting graph. This indicates that the model is too simple at capturing the underlying patterns in the data, as it only has 3 convolutional layers. Another contributing factor is the imbalance in the dataset, where non-fractured images dominate (around 80%), leading to biased learning that overlooks the minority class.
+
+### VIT model:
+To help prevent class imbalances, we tried random oversampling of the minority output label (which is fractured images) in this case. The training accuracy is around 98.88 and the training loss is 0.0353. On the other hand, the validation accuracy is 61.81% while the validation loss is 1.7631. Because there appears to be a significant difference between the training loss and accuracy and the validation loss and accuracy, our model may not be able to generalize well to new unseen data even though there is a very high training accuracy.
+We may need to implement techniques such as early stopping (stopping training when there is no significant improvement in validation accuracy after a specific number of epochs) and cross-validation. The model may also be too complex which could also be contributing to the overfitting. Continuing to finetune the model hyperparameters with tools such as GridSearch may also help us find a model architecture that is able to learn the training data well while also being able to generalize to new data.Because training accuracy is in the high 90s while the validation accuracy low 60s after training for 20 epochs, the model seems to be overfitting. The large difference between the training and validation accuracy implies that the model may be overfitting to the specific patterns of the training data and therefore is not able to generalize well. We may need to employ some regularization techniques and continue fine tuning the hyperparameters in order to prevent overfitting.
+
+Comparing the vision transformer model to the first model (the CNN) we trained, the CNN has a higher training and validation accuracy, although that model was underfitting. However, we plan to continue to train both models and improve their accuracy and performance while evaluating other metrics such as precision and recall. We modified the hyperparameters and got the following metrics: 
+True Positive: 49
+False Positive: 65
+True Negative: 263
+False Negative: 32
+Accuracy: 0.7628361858190709
+Recall: 0.6049382716049383
+Precision: 0.4298245614035088
+F1 Score: 0.5025641025641027
+The hyperparameters we used:
+patch_size 64
+D_model: 512
+num_heads 8
+Num_layers: 2 
+Mlp_dim: 512 
+Dropout_rate: 0.3  
+learning_rate: 1e-06
+
+Upon further fine tuning of these parameters, 
+
+Best Patch Size: 8
+Best Embedding Dimension: 256
+Best Number of Heads: 2
+Best Number of Layers: 2
+Best MLP Dim: 256
+Best Dropout Rate: 0.5
+Best Learning Rate: 1e-05
+
+We were able to achieve for 1.409806 for test loss and 0.7750611305236816 for Test Accuracy, making it our best performing model yet. 
+
+### EfficientNetB0 model:
+The results of the EfficientNetB0 model reveal significant challenges with both training and test performance, suggesting issues of underfitting. During training, the model’s accuracy fluctuated around 50%, and the loss hovered near 0.693, which is indicative of a model that is not learning meaningful features from the data. This is further corroborated by the validation accuracy, which, while initially reaching high values (above 80%), is unstable and potentially misleading due to the model’s inability to separate the two classes effectively, as indicated by the precision and recall metrics.
+
+On the test dataset, the model achieved an overall accuracy of 60% with a macro-averaged F1-score of 0.37. A closer examination of the per-class metrics shows that the model correctly identifies most non-fractured samples (recall of 1.00) but fails entirely on the fractured samples (recall of 0.00). This stark imbalance in performance indicates that the model might be biased towards the majority class (non-fractured), which often occurs in imbalanced datasets.
+
+The EfficientNetB0 model appears to be underfitting the data. This underfitting could be attributed to the freezing of the pre-trained EfficientNetB0 layers, which might prevent the model from adapting its learned features to the fracture detection task, especially given the domain shift from ImageNet data to medical imagery. Additionally, the use of grayscale inputs converted to RGB might lead to information loss, further hampering feature extraction. The persistent high validation accuracy coupled with poor test performance suggests that the data augmentation pipeline might also contribute to over-representing augmented patterns in the training data.
+
+Overall, EfficientNetB0, while offering a more computationally efficient and scalable architecture, showed limitations compared to the Vision Transformer (ViT) in this fracture detection task. Unlike ViT, which achieved smoother learning curves and higher overall validation accuracy, EfficientNetB0 demonstrated significant fluctuations in both training and validation accuracy. Despite these challenges, EfficientNetB0 occasionally achieved competitive peaks in validation accuracy, indicating its potential for generalization. However, it struggled with consistency, as the validation accuracy dropped sharply between epochs. This instability may have stemmed from the model's lighter architecture, which prioritizes efficiency over capacity to handle complex features. In contrast, ViT, with its global attention mechanism, achieved greater stability and better overall performance, particularly in validation accuracy. While EfficientNetB0 is a valuable addition due to its efficiency, its performance highlights the need for additional fine-tuning or adjustments to match the generalization capabilities of ViT.
+
+While the ViT outperformed the CNN after extensive tuning, several challenges remain. The model’s initially high training accuracy underscores the importance of regularization and balanced datasets. The performance gap between fractured and non-fractured classes persists, reflecting the need for more robust techniques, such as focal loss or synthetic data augmentation, to address class imbalance. Additionally, the computational cost of the ViT model is significantly higher than the CNN, raising concerns about scalability and practicality for larger datasets or real-time applications.
+
+Future work could explore hybrid architectures that combine CNNs and transformers to balance efficiency and accuracy. Transfer learning with domain-specific pretraining on medical datasets might further enhance performance. 
+
+# Conclusion:
+### Opinions
+
+In conclusion, the Vision Transformer (ViT) model is the best model for our task, as it achieved the highest test accuracy, which is the key metric used for evaluation. This makes it the most reliable choice for future training and model optimization. The ViT model has demonstrated strong performance in generalizing to unseen data, and its test accuracy suggests that with further refinement, it could provide even better results. Given that the test set represents real-world data that the model hasn't encountered during training, a high test accuracy is crucial for ensuring the model's ability to make accurate predictions in practical applications. Therefore, the ViT model is well-suited for continued fine-tuning and further optimization to enhance its performance in future iterations.
+
+### Future Directions
+There are several avenues for improvement and exploration that we wish we could have explored to further enhance model performance and broaden its practical applicability. One key direction involves the development of ensemble models that combine the strengths of CNNs and transformers. By integrating these architectures, it is possible to leverage the spatial feature extraction capabilities of CNNs alongside the global dependency modeling of transformers. Such ensemble approaches could reduce the variance and bias inherent to individual models, ultimately boosting predictive accuracy and robustness.
+
+Another promising avenue involves incorporating ConvNext, a state-of-the-art convolutional model inspired by Vision Transformers. ConvNext retains the architectural simplicity of traditional CNNs while incorporating innovations that have propelled transformer architectures to prominence. By exploring ConvNext as a fourth model in future work, it could serve as a strong standalone contender or as a component of an ensemble strategy. Its design, emphasizing efficiency and performance, aligns well with the need for scalable and interpretable solutions in medical imaging.
+
+Looking at the limitations of this study, future work should focus on expanding the dataset by including more samples from different demographics to make the model more widely applicable. In addition, using advanced data augmentation methods and exploring self-supervised learning could help the model perform better with limited labeled data. It would also be beneficial to add features like localization and segmentation to the model, so it can accurately identify fracture locations and provide more detailed diagnostic support.
