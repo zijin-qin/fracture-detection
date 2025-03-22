@@ -1,6 +1,6 @@
 <h1 style="font-size: 40px;">Fracture Detection Project</h1>
 
-![Alt text](./images/med AI.png)
+![Alt text](./images/med%20AI.png)
 
 Fracture detection in X-ray imaging represents a pivotal challenge in medical diagnostics, with significant implications for patient care. Timely and accurate identification of fractures is critical not only for ensuring prompt medical intervention but also for reducing the risk of complications, expediting recovery, and minimizing long-term disability. Despite advancements in medical imaging, reliance on manual interpretation by radiologists often remains a bottleneck, particularly in regions with limited access to trained professionals. Developing an automated and reliable model for fracture detection addresses these challenges by acting as a secondary diagnostic tool, capable of reducing diagnostic errors and alleviating the workload of medical experts.
 
